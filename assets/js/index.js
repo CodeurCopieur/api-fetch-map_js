@@ -1,16 +1,23 @@
 const searchInput = document.getElementById('seacrh');
 const results = document.getElementById('results');
-
+const apiKey = 'cc4c125990f5777406886df6fdb3e266';
+let currentPage = 1;
+let totalResults = 0;
 console.log(results);
 
-let movie;
+let movies = [];
 let searchTerm = '';
+let showloader = false;
+
+
 
 // API REQUEST
 const fetchMovies = async() => {
-  movies = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=cc4c125990f5777406886df6fdb3e266')
+  moviesFind = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${currentPage}`)
     .then( data => data.json())
-    .then( data => data.results)
+    .then( data => data.results.forEach( elt => {
+      movies.push(elt);
+    }))
 }
 const showMovies = async() => {
   await fetchMovies();
@@ -32,12 +39,29 @@ const showMovies = async() => {
             </div>
             <div class="component__wrap-texts">
               <h3 class="component__wrap-title">${movie.original_title}</h3>
-              <p>${movie.overview}</p>
+              <p></p>
             </div>
           </li>
           `
       )).join('')
   );
+
+  showloader = false;
 };
 
+const scrollTriger = () => {
+  const observer = new IntersectionObserver( (entries) => {
+    entries.forEach( entry => {
+      if(entry.intersectionRatio > 0 && currentPage < 290) {
+        showloader = true;
+        currentPage += 1;
+        showMovies();
+      }
+    });
+  });
+  observer.observe(document.querySelector('[data-ref]'));
+}
+
 showMovies();
+
+window.addEventListener('DOMContentLoaded', scrollTriger())
