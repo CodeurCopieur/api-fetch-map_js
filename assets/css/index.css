@@ -5,15 +5,15 @@
   box-sizing: border-box;
   font-family: Helvetica, sans-serif; }
 
-.component {
+.component, #component {
   min-height: 100vh;
   margin: 0 1rem;
   text-align: center; }
-  .component h1 {
+  .component h1, #component h1 {
     text-transform: uppercase;
     padding: 3rem 0;
     letter-spacing: .5px; }
-  .component input {
+  .component input, #component input {
     margin-bottom: 2rem;
     border-radius: 50px;
     padding: .5rem 3rem;
@@ -23,7 +23,7 @@
     color: #333;
     font-size: 1rem;
     text-align: center; }
-  .component__wrap-movies {
+  .component__wrap-movies, #component__wrap-movies {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -33,7 +33,7 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row; }
-  .component__wrap-movie {
+  .component__wrap-movie, #component__wrap-movie {
     width: 25%;
     padding: 10px;
     -webkit-transition: all 480ms;
@@ -41,18 +41,18 @@
     transition: all 480ms;
     overflow: hidden;
     position: relative; }
-  .component__wrap-picture picture {
+  .component__wrap-picture picture, #component__wrap-picture picture {
     display: block;
     position: relative;
     height: 0;
     padding-top: 150%; }
-    .component__wrap-picture picture img {
+    .component__wrap-picture picture img, #component__wrap-picture picture img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%; }
-  .component__wrap-texts {
+  .component__wrap-texts, #component__wrap-texts {
     position: absolute;
     top: 0;
     left: 0;
@@ -61,11 +61,11 @@
     padding: 30px;
     color: #fff;
     z-index: 100; }
-  .component__wrap-picture {
+  .component__wrap-picture, #component__wrap-picture {
     position: relative;
     overflow: hidden;
     border-radius: 8px; }
-    .component__wrap-picture::before {
+    .component__wrap-picture::before, #component__wrap-picture::before {
       content: '';
       top: 0;
       left: 0;
@@ -74,6 +74,19 @@
       width: 100%;
       height: 100%;
       background-color: rgba(34, 34, 34, 0.24); }
+  .component__scroll-trigger, #component__scroll-trigger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    font-size: 1.6rem; }
   @media screen and (max-width: 968px) {
-    .component__wrap-movie {
+    .component__wrap-movie, #component__wrap-movie {
       width: 50%; } }
