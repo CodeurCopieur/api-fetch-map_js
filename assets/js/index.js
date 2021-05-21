@@ -1,34 +1,31 @@
 const searchInput = document.getElementById('seacrh');
 const results = document.getElementById('results');
 const apiKey = 'cc4c125990f5777406886df6fdb3e266';
+const apiUrl = 'https://api.themoviedb.org/3/'
+
 let currentPage = 1;
 let totalResults = 0;
-console.log(results);
-
-let movies = [];
-let searchTerm = '';
+let movies;
 let showloader = false;
 
 
 
+
 // API REQUEST
-const fetchMovies = async() => {
-  moviesFind = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${currentPage}`)
+const fetchMovies = async(paramSearch) => {
+  movies = await fetch(`${apiUrl}${paramSearch}?api_key=${apiKey}&page=${currentPage}`)
     .then( data => data.json())
-    .then( data => data.results.forEach( elt => {
-      movies.push(elt);
-    }))
+    .then( data => data.results)
 }
 const showMovies = async() => {
-  await fetchMovies();
+  await fetchMovies('movie/popular');
 
   if(movies == null) {
     results.innerHTML = `<span>Aucun resultat</span>`;
   }
 
-  results.innerHTML = (
+  results.innerHTML += (
     movies
-      .filter(movie => movie.title.toLowerCase().includes(searchTerm.toLowerCase()))
       .map( movie => (
           ` 
           <li class="component__wrap-movie" data-genres="${movie.genre_ids}">
@@ -45,15 +42,12 @@ const showMovies = async() => {
           `
       )).join('')
   );
-
-  showloader = false;
 };
 
 const scrollTriger = () => {
   const observer = new IntersectionObserver( (entries) => {
-    entries.forEach( entry => {
-      if(entry.intersectionRatio > 0 && currentPage < 290) {
-        showloader = true;
+    entries.forEach( ({intersectionRatio}) => {
+      if(intersectionRatio > 0 && currentPage < 200) {
         currentPage += 1;
         showMovies();
       }

@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appeler et rechercher une API avec Fetch et .map</title>
     <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
     <main class="component"> 
-      <h1>the movie db</h1>
-      <input type="text" name="" id="seacrh" placeholder="Entrez le nom du film" autocomplete="off">
-      <ul class="component__wrap-movies" id="results"></ul><div data-ref="infiniteScrollerTrigger" id="component__scroll-trigger">
-<i class="spin hide"></i>
-</div>
+      <h1>Les films populaires actuels sur TMDB</h1>
+      <ul class="component__wrap-movies" id="results"></ul>
+      <div data-ref="infiniteScrollerTrigger" id="component__scroll-trigger"><i class="fas fa-spinner fas-spin"></i></div>
     </main>
     <script src="./assets/js/index.js"> </script>
   </body>

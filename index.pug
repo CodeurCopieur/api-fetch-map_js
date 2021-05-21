@@ -7,16 +7,16 @@ html(lang="en")
     title Appeler et rechercher une API avec Fetch et .map
 
     link(rel="stylesheet", href="./assets/css/index.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
   body
 
     main.component 
-      h1 the movie db
-      input(type="text", name="", id="seacrh", placeholder="Entrez le nom du film", autocomplete="off")
+      h1 Les films populaires actuels sur TMDB
 
       ul#results.component__wrap-movies
-      <div data-ref="infiniteScrollerTrigger" id="component__scroll-trigger">
-          <i class="spin hide"></i>
-      </div>
+
+      div(data-ref="infiniteScrollerTrigger" id="component__scroll-trigger")
+          i.fas.fa-spinner.fas-spin
 
 
     script(src="./assets/js/index.js") 
