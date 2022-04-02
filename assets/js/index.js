@@ -1,6 +1,6 @@
 const searchInput = document.getElementById('seacrh');
 const results = document.getElementById('results');
-const apiKey = 'cc4c125990f5777406886df6fdb3e266';
+const apiKey = '********************************';
 const apiUrl = 'https://api.themoviedb.org/3/'
 
 let currentPage = 1;
